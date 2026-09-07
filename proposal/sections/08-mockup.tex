@@ -1,0 +1,38 @@
+\clearpage
+\section[Mockup / Gambaran Aplikasi]{}
+\sectionopener{cgreen}{Bukan Rancangan Kertas}{Mockup / Gambaran Aplikasi}{Setiap tangkapan layar di proposal ini diambil langsung dari instans produksi yang berjalan hari ini, bukan purwarupa desain statis.}
+
+Berbeda dari kebanyakan proposal kompetisi yang menyertakan \textit{wireframe} atau rancangan visual sebagai gambaran rencana, seluruh tangkapan layar Atlas dalam dokumen ini diambil dari aplikasi yang sudah dapat diakses dan digunakan sungguhan di \texttt{atlas.creations.ren}. Bagian ini memberikan gambaran tambahan yang belum ditunjukkan di bagian Fitur Aplikasi: halaman masuk, tampilan proyek, konsol admin, dan responsivitas di layar ponsel.
+
+\noindent
+\begin{minipage}[t]{0.48\linewidth}
+\atlasframe{/login}{assets/screenshots/curated/auth-login.png}{1}
+\framecaption{Halaman masuk menampilkan hanya metode otentikasi yang diaktifkan admin lewat Godmode.}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\linewidth}
+\atlasframe{/projects/northstar-studio}{assets/screenshots/curated/project-overview.png}{1}
+\framecaption{Halaman ringkasan proyek, dengan sampul yang dibuat otomatis dari data proyek itu sendiri.}
+\end{minipage}
+
+\vspace{0.6em}
+\noindent
+\begin{minipage}[t]{0.48\linewidth}
+\atlasframe{/admin?tab=users}{assets/screenshots/curated/admin-users.png}{1}
+\framecaption{Konsol admin: pengelolaan pengguna di luar panel Godmode.}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\linewidth}
+\atlasframe{/godmode\#sso}{assets/screenshots/curated/godmode-sso.png}{1}
+\framecaption{Konfigurasi SSO institusi (OIDC/SAML) tanpa biaya tambahan.}
+\end{minipage}
+
+\vspace{1.1em}
+\subsection{Responsif di layar ponsel}
+
+Seluruh antarmuka melewati audit responsif lintas breakpoint (360 hingga 1920px), termasuk navigasi yang berubah jadi \textit{drawer} pada layar sempit dan target sentuh minimal 36px.
+
+\noindent
+\begin{minipage}[t]{0.31\linewidth}\includegraphics[width=\linewidth]{assets/screenshots/curated/mobile-dashboard.png}\\[0.2em]\framecaption{Discover (ponsel)}\end{minipage}\hfill
+\begin{minipage}[t]{0.31\linewidth}\includegraphics[width=\linewidth]{assets/screenshots/curated/mobile-kanban.png}\\[0.2em]\framecaption{Kanban (ponsel)}\end{minipage}\hfill
+\begin{minipage}[t]{0.31\linewidth}\includegraphics[width=\linewidth]{assets/screenshots/curated/mobile-chat.png}\\[0.2em]\framecaption{Chat (ponsel)}\end{minipage}
+
+\clearpage

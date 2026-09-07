@@ -1,0 +1,51 @@
+\clearpage
+\section[Arsitektur Sistem]{}
+\sectionopener{cblue}{Di Bawah Tenda}{Arsitektur Sistem}{Semua ditulis dengan teknologi produksi yang matang, dipilih untuk keandalan jangka panjang, bukan sekadar demo kompetisi.}
+
+\subsection{Tumpukan teknologi}
+
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.35}
+\begin{tabular}{@{}p{0.24\linewidth}p{0.72\linewidth}@{}}
+\toprule
+\tblhead{Lapisan} & \tblhead{Teknologi} \\
+\midrule
+Frontend & Next.js 15 (App Router), React 19, TypeScript, TanStack Query, Tailwind \\
+Backend & NestJS 10, TypeScript, Prisma 5 ORM, class-validator \\
+Basis data & PostgreSQL (dikelola Railway di produksi) \\
+Cache \& rate limit & Redis \\
+Real-time dokumen & Yjs (CRDT) lewat relay \texttt{y-websocket} khusus, untuk catatan dan whiteboard \\
+Suara \& panggilan & LiveKit SFU (WebRTC) + LiveKit Egress untuk rekaman opsional \\
+Penyimpanan berkas & Dapat dipilih lewat Godmode: disk lokal, S3, atau R2 (S3-compatible) \\
+Otentikasi & Sesi opaque tersimpan di basis data, dikirim lewat header \texttt{Authorization: Bearer}, tanpa cookie maupun Auth.js/NextAuth \\
+Lisensi & AGPL-3.0 (bersumber terbuka) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\diagrambox{assets/diagrams/architecture.pdf}{1}
+\framecaption{Backend menjadi jembatan kontrol; media suara dan sinkronisasi dokumen mengalir langsung antara browser dan sidecar-nya, tidak dibebankan ke backend.}
+
+\clearpage
+\subsection{Alur otentikasi}
+
+Atlas tidak menggunakan Auth.js/NextAuth maupun cookie httpOnly. Setiap sesi adalah UUID acak (opaque) yang disimpan di basis data dan dikirim lewat header \texttt{Authorization: Bearer}, diverifikasi ulang di backend pada setiap permintaan lewat strategi \texttt{passport-custom}. Pendekatan ini mendukung enam metode masuk sekaligus: kata sandi, tautan ajaib, OTP telepon, kata sandi instans, OAuth2 (Google, GitHub, GitLab, Discord, dan lainnya), serta OIDC/SAML untuk direktori identitas institusi seperti Okta atau Entra ID, semuanya dikonfigurasi lewat Godmode tanpa deploy ulang.
+
+\diagrambox{assets/diagrams/auth-flow.pdf}{0.92}
+
+\vspace{1em}
+\subsection{Topologi deployment}
+
+Instans produksi Atlas (\texttt{atlas.creations.ren}) berjalan di Railway untuk layanan frontend, backend, dan basis data PostgreSQL terkelola, dengan LiveKit SFU dijalankan terpisah di VPS khusus (media WebRTC sebaiknya tidak berbagi jaringan dengan platform PaaS umum agar latensi suara tetap rendah), dan Cloudflare di depan untuk DNS.
+
+\diagrambox{assets/diagrams/deployment.pdf}{0.92}
+
+\clearpage
+\subsection{Model data inti}
+
+Skema Prisma lengkap mencakup lebih dari 40 tabel; berikut versi yang disederhanakan untuk menunjukkan relasi inti antara pengguna, proyek, tugas, dan komunikasi.
+
+\diagrambox{assets/diagrams/erd.pdf}{1}
+
+\clearpage

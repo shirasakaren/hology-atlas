@@ -1,0 +1,555 @@
+[
+  {
+    "file": "001-auth-landing.png",
+    "category": "auth",
+    "name": "landing",
+    "path": "/",
+    "ok": true
+  },
+  {
+    "file": "002-auth-login.png",
+    "category": "auth",
+    "name": "login",
+    "path": "/login",
+    "ok": true
+  },
+  {
+    "file": "003-auth-register.png",
+    "category": "auth",
+    "name": "register",
+    "path": "/register",
+    "ok": true
+  },
+  {
+    "file": "004-auth-forgot-password.png",
+    "category": "auth",
+    "name": "forgot-password",
+    "path": "/auth/forgot-password",
+    "ok": true
+  },
+  {
+    "file": "005-auth-magic-link.png",
+    "category": "auth",
+    "name": "magic-link",
+    "path": "/auth/magic-link",
+    "ok": true
+  },
+  {
+    "file": "006-core-dashboard.png",
+    "category": "core",
+    "name": "dashboard",
+    "path": "/dashboard",
+    "ok": true
+  },
+  {
+    "file": "007-core-for-me.png",
+    "category": "core",
+    "name": "for-me",
+    "path": "/for-me",
+    "ok": true
+  },
+  {
+    "file": "008-core-notifications.png",
+    "category": "core",
+    "name": "notifications",
+    "path": "/notifications",
+    "ok": true
+  },
+  {
+    "file": "009-core-notif-bell-open.png",
+    "category": "core",
+    "name": "notif-bell-open",
+    "path": "/dashboard",
+    "ok": true
+  },
+  {
+    "file": "010-core-my-profile.png",
+    "category": "core",
+    "name": "my-profile",
+    "path": "/me",
+    "ok": true
+  },
+  {
+    "file": "011-core-saved.png",
+    "category": "core",
+    "name": "saved",
+    "path": "/me/saved",
+    "ok": true
+  },
+  {
+    "file": "012-projects-grid.png",
+    "category": "projects",
+    "name": "grid",
+    "path": "/projects",
+    "ok": true
+  },
+  {
+    "file": "013-projects-new.png",
+    "category": "projects",
+    "name": "new",
+    "path": "/projects/new",
+    "ok": true
+  },
+  {
+    "file": "014-projects-overview.png",
+    "category": "projects",
+    "name": "overview",
+    "path": "/projects/demo-northstar-studio",
+    "ok": true
+  },
+  {
+    "file": "015-projects-manage.png",
+    "category": "projects",
+    "name": "manage",
+    "path": "/projects/demo-northstar-studio/manage",
+    "ok": true
+  },
+  {
+    "file": "016-projects-manage-requests.png",
+    "category": "projects",
+    "name": "manage-requests",
+    "path": "/projects/demo-northstar-studio/manage/requests",
+    "ok": true
+  },
+  {
+    "file": "017-projects-lists.png",
+    "category": "projects",
+    "name": "lists",
+    "path": "/projects/demo-northstar-studio/lists",
+    "ok": true
+  },
+  {
+    "file": "018-projects-team.png",
+    "category": "projects",
+    "name": "team",
+    "path": "/projects/demo-northstar-studio/lists/3fc2fa49-fb52-4057-a3fe-f69f4f60fe44/team",
+    "ok": true
+  },
+  {
+    "file": "019-pmo-list-view.png",
+    "category": "pmo",
+    "name": "list-view",
+    "path": "/projects/demo-northstar-studio/lists/3fc2fa49-fb52-4057-a3fe-f69f4f60fe44/list",
+    "ok": true
+  },
+  {
+    "file": "020-pmo-kanban.png",
+    "category": "pmo",
+    "name": "kanban",
+    "path": "/projects/demo-northstar-studio/lists/3fc2fa49-fb52-4057-a3fe-f69f4f60fe44/kanban",
+    "ok": true
+  },
+  {
+    "file": "021-pmo-timeline.png",
+    "category": "pmo",
+    "name": "timeline",
+    "path": "/projects/demo-northstar-studio/lists/3fc2fa49-fb52-4057-a3fe-f69f4f60fe44/timeline",
+    "ok": true
+  },
+  {
+    "file": "022-pmo-task-new.png",
+    "category": "pmo",
+    "name": "task-new",
+    "path": "/projects/demo-northstar-studio/lists/3fc2fa49-fb52-4057-a3fe-f69f4f60fe44/tasks/new",
+    "ok": true
+  },
+  {
+    "file": "023-pmo-notes.png",
+    "category": "pmo",
+    "name": "notes",
+    "path": "/projects/demo-northstar-studio/lists/3fc2fa49-fb52-4057-a3fe-f69f4f60fe44/notes",
+    "ok": true
+  },
+  {
+    "file": "024-pmo-whiteboards-list.png",
+    "category": "pmo",
+    "name": "whiteboards-list",
+    "path": "/projects/demo-northstar-studio/lists/3fc2fa49-fb52-4057-a3fe-f69f4f60fe44/whiteboards",
+    "ok": true
+  },
+  {
+    "file": "025-pmo-whiteboard-canvas.png",
+    "category": "pmo",
+    "name": "whiteboard-canvas",
+    "path": "/projects/demo-northstar-studio/lists/3fc2fa49-fb52-4057-a3fe-f69f4f60fe44/whiteboards/746426a0-44ea-4cea-a9bc-7cfc8d88661c",
+    "ok": true
+  },
+  {
+    "file": "026-pmo-files.png",
+    "category": "pmo",
+    "name": "files",
+    "path": "/projects/demo-northstar-studio/lists/3fc2fa49-fb52-4057-a3fe-f69f4f60fe44/files",
+    "ok": true
+  },
+  {
+    "file": "027-pmo-list2-kanban.png",
+    "category": "pmo",
+    "name": "list2-kanban",
+    "path": "/projects/demo-northstar-studio/lists/eebac7e0-5597-4cc7-afd9-eba30a5b102e/kanban",
+    "ok": true
+  },
+  {
+    "file": "028-pmo-task-detail-modal.png",
+    "category": "pmo",
+    "name": "task-detail-modal",
+    "path": "/projects/demo-northstar-studio/lists/3fc2fa49-fb52-4057-a3fe-f69f4f60fe44/kanban",
+    "ok": true
+  },
+  {
+    "file": "029-chat-global-landing.png",
+    "category": "chat",
+    "name": "global-landing",
+    "path": "/chat",
+    "ok": true
+  },
+  {
+    "file": "030-chat-global-community.png",
+    "category": "chat",
+    "name": "global-community",
+    "path": "/chat/global/ccd01b07-dc2c-42fd-a934-985dc5a5be54",
+    "ok": true
+  },
+  {
+    "file": "031-chat-project-landing.png",
+    "category": "chat",
+    "name": "project-landing",
+    "path": "/projects/demo-northstar-studio/chat",
+    "ok": true
+  },
+  {
+    "file": "032-chat-project-general.png",
+    "category": "chat",
+    "name": "project-general",
+    "path": "/projects/demo-northstar-studio/chat/62a4d230-549a-40c8-aeb3-04b2b91bc2c9",
+    "ok": true
+  },
+  {
+    "file": "033-chat-project-design-review.png",
+    "category": "chat",
+    "name": "project-design-review",
+    "path": "/projects/demo-northstar-studio/chat/29a44323-e2c5-4c94-a235-04e440966e3c",
+    "ok": true
+  },
+  {
+    "file": "034-chat-project-release-room.png",
+    "category": "chat",
+    "name": "project-release-room",
+    "path": "/projects/demo-northstar-studio/chat/155d6e6d-476f-49cb-a95d-7127593522a1",
+    "ok": true
+  },
+  {
+    "file": "035-voice-project-sidebar-entry.png",
+    "category": "voice",
+    "name": "project-sidebar-entry",
+    "path": "/projects/demo-northstar-studio",
+    "ok": true
+  },
+  {
+    "file": "036-godmode-unlock-screen.png",
+    "category": "godmode",
+    "name": "unlock-screen",
+    "path": "/godmode",
+    "ok": true
+  },
+  {
+    "file": "037-godmode-overview.png",
+    "category": "godmode",
+    "name": "overview",
+    "path": "/godmode",
+    "ok": true
+  },
+  {
+    "file": "038-godmode-users.png",
+    "category": "godmode",
+    "name": "users",
+    "path": "/godmode",
+    "ok": true
+  },
+  {
+    "file": "039-godmode-roles.png",
+    "category": "godmode",
+    "name": "roles",
+    "path": "/godmode",
+    "ok": true
+  },
+  {
+    "file": "040-godmode-site.png",
+    "category": "godmode",
+    "name": "site",
+    "path": "/godmode",
+    "ok": true
+  },
+  {
+    "file": "041-godmode-appearance.png",
+    "category": "godmode",
+    "name": "appearance",
+    "path": "/godmode",
+    "ok": true
+  },
+  {
+    "file": "042-godmode-registration.png",
+    "category": "godmode",
+    "name": "registration",
+    "path": "/godmode",
+    "ok": true
+  },
+  {
+    "file": "043-godmode-authentication.png",
+    "category": "godmode",
+    "name": "authentication",
+    "path": "/godmode",
+    "ok": true
+  },
+  {
+    "file": "044-godmode-sessions-policy.png",
+    "category": "godmode",
+    "name": "sessions-policy",
+    "path": "/godmode",
+    "ok": true
+  },
+  {
+    "file": "045-godmode-oauth.png",
+    "category": "godmode",
+    "name": "oauth",
+    "path": "/godmode",
+    "ok": true
+  },
+  {
+    "file": "046-godmode-sso.png",
+    "category": "godmode",
+    "name": "sso",
+    "path": "/godmode",
+    "ok": true
+  },
+  {
+    "file": "047-godmode-storage.png",
+    "category": "godmode",
+    "name": "storage",
+    "path": "/godmode",
+    "ok": true
+  },
+  {
+    "file": "048-godmode-modules.png",
+    "category": "godmode",
+    "name": "modules",
+    "path": "/godmode",
+    "ok": true
+  },
+  {
+    "file": "049-godmode-legal.png",
+    "category": "godmode",
+    "name": "legal",
+    "path": "/godmode",
+    "ok": true
+  },
+  {
+    "file": "050-admin-tags.png",
+    "category": "admin",
+    "name": "tags",
+    "path": "/admin?tab=tags",
+    "ok": true
+  },
+  {
+    "file": "051-admin-featured.png",
+    "category": "admin",
+    "name": "featured",
+    "path": "/admin?tab=featured",
+    "ok": true
+  },
+  {
+    "file": "052-admin-roles.png",
+    "category": "admin",
+    "name": "roles",
+    "path": "/admin?tab=roles",
+    "ok": true
+  },
+  {
+    "file": "053-admin-users.png",
+    "category": "admin",
+    "name": "users",
+    "path": "/admin?tab=users",
+    "ok": true
+  },
+  {
+    "file": "054-admin-stickers.png",
+    "category": "admin",
+    "name": "stickers",
+    "path": "/admin?tab=stickers",
+    "ok": true
+  },
+  {
+    "file": "055-admin-chat.png",
+    "category": "admin",
+    "name": "chat",
+    "path": "/admin?tab=chat",
+    "ok": true
+  },
+  {
+    "file": "056-admin-flags.png",
+    "category": "admin",
+    "name": "flags",
+    "path": "/admin?tab=flags",
+    "ok": true
+  },
+  {
+    "file": "057-settings-hub.png",
+    "category": "settings",
+    "name": "hub",
+    "path": "/settings",
+    "ok": true
+  },
+  {
+    "file": "058-settings-profile.png",
+    "category": "settings",
+    "name": "profile",
+    "path": "/settings/profile",
+    "ok": true
+  },
+  {
+    "file": "059-settings-account.png",
+    "category": "settings",
+    "name": "account",
+    "path": "/settings/account",
+    "ok": true
+  },
+  {
+    "file": "060-settings-appearance.png",
+    "category": "settings",
+    "name": "appearance",
+    "path": "/settings/appearance",
+    "ok": true
+  },
+  {
+    "file": "061-settings-notifications.png",
+    "category": "settings",
+    "name": "notifications",
+    "path": "/settings/notifications",
+    "ok": true
+  },
+  {
+    "file": "062-settings-privacy.png",
+    "category": "settings",
+    "name": "privacy",
+    "path": "/settings/privacy",
+    "ok": true
+  },
+  {
+    "file": "063-theme-atlas-light.png",
+    "category": "theme",
+    "name": "atlas-light",
+    "path": "/dashboard",
+    "ok": true
+  },
+  {
+    "file": "064-theme-ocean-light.png",
+    "category": "theme",
+    "name": "ocean-light",
+    "path": "/dashboard",
+    "ok": true
+  },
+  {
+    "file": "065-theme-sunset-light.png",
+    "category": "theme",
+    "name": "sunset-light",
+    "path": "/dashboard",
+    "ok": true
+  },
+  {
+    "file": "066-theme-rose-light.png",
+    "category": "theme",
+    "name": "rose-light",
+    "path": "/dashboard",
+    "ok": true
+  },
+  {
+    "file": "067-theme-lavender-light.png",
+    "category": "theme",
+    "name": "lavender-light",
+    "path": "/dashboard",
+    "ok": true
+  },
+  {
+    "file": "068-theme-mint-light.png",
+    "category": "theme",
+    "name": "mint-light",
+    "path": "/dashboard",
+    "ok": true
+  },
+  {
+    "file": "069-theme-midnight-dark.png",
+    "category": "theme",
+    "name": "midnight-dark",
+    "path": "/dashboard",
+    "ok": true
+  },
+  {
+    "file": "070-theme-noir-dark.png",
+    "category": "theme",
+    "name": "noir-dark",
+    "path": "/dashboard",
+    "ok": true
+  },
+  {
+    "file": "071-misc-legal-terms.png",
+    "category": "misc",
+    "name": "legal-terms",
+    "path": "/legal/terms",
+    "ok": true
+  },
+  {
+    "file": "072-misc-legal-privacy.png",
+    "category": "misc",
+    "name": "legal-privacy",
+    "path": "/legal/privacy",
+    "ok": true
+  },
+  {
+    "file": "073-misc-health.png",
+    "category": "misc",
+    "name": "health",
+    "path": "/health",
+    "ok": true
+  },
+  {
+    "file": "074-mobile-dashboard.png",
+    "category": "mobile",
+    "name": "dashboard",
+    "path": "/dashboard",
+    "ok": true
+  },
+  {
+    "file": "075-mobile-kanban.png",
+    "category": "mobile",
+    "name": "kanban",
+    "path": "/projects/demo-northstar-studio/lists/3fc2fa49-fb52-4057-a3fe-f69f4f60fe44/kanban",
+    "ok": true
+  },
+  {
+    "file": "076-mobile-chat.png",
+    "category": "mobile",
+    "name": "chat",
+    "path": "/projects/demo-northstar-studio/chat/62a4d230-549a-40c8-aeb3-04b2b91bc2c9",
+    "ok": true
+  },
+  {
+    "file": "077-mobile-godmode.png",
+    "category": "mobile",
+    "name": "godmode",
+    "path": "/godmode",
+    "ok": true
+  },
+  {
+    "file": "078-mobile-settings.png",
+    "category": "mobile",
+    "name": "settings",
+    "path": "/settings",
+    "ok": true
+  },
+  {
+    "file": "079-mobile-projects.png",
+    "category": "mobile",
+    "name": "projects",
+    "path": "/projects",
+    "ok": true
+  }
+]
