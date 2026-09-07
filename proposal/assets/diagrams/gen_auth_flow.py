@@ -37,7 +37,7 @@ c.arrow(560+140, iy+90, 290, sy, color=INK3, label="simpan baris")
 c.arrow(700, iy+90, 700, sy, color=INK3, label="kirim ke client")
 c.arrow(840, sy+50, 960, sy+50, color=INK3, label="tiap panggilan")
 
-c.text(700, 600, "Metode masuk berbeda-beda, tetapi semuanya bermuara pada satu penerbit sesi — konsisten dan mudah diaudit.",
+c.text(700, 600, "Metode masuk berbeda-beda, tetapi semuanya bermuara pada satu penerbit sesi yang konsisten dan mudah diaudit.",
         size=13, family=F_SANS, fill=INK3, anchor="middle")
 
 c.save("auth-flow.svg")

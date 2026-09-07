@@ -7,7 +7,7 @@ c.defs_arrowhead(INK4)
 
 c.eyebrow(60, 56, "ARSITEKTUR SISTEM")
 c.text(60, 92, "Model Data Inti (ERD Disederhanakan)", size=32, family=F_DISPLAY, weight=700, fill=INK)
-c.text(60, 118, "13 entitas utama dari skema Prisma penuh — kolom lengkap tersedia di source code.",
+c.text(60, 118, "13 entitas utama dari skema Prisma penuh, kolom lengkap tersedia di source code.",
         size=14, family=F_SANS, fill=INK3)
 
 def ent(x, y, w, h, title, fields, accent=BLUE, tint=BLUE_50):
@@ -57,7 +57,7 @@ c.arrow(890, 470, 1130, 380, color=RED, label="channel milik project")
 c.arrow(1260, 410, 1260, 470, color=RED, label="1:N")
 c.arrow(1260, 560, 1075, 260, color=INK4, dashed=True, label="author", curve=120)
 
-c.text(750, 940, "Garis putus-putus = relasi balik ke User (assignee / author) — digambar melengkung agar diagram tetap terbaca.",
+c.text(750, 940, "Garis putus-putus = relasi balik ke User (assignee / author), digambar melengkung agar diagram tetap terbaca.",
         size=12.5, family=F_SANS, fill=INK4, anchor="middle")
 
 c.save("erd.svg")

@@ -1,9 +1,10 @@
-\clearpage
 \section{Arsitektur Sistem}
 
 Semua ditulis dengan teknologi produksi yang matang, dipilih untuk keandalan jangka panjang, bukan sekadar demo kompetisi.
 
 \subsection{Tumpukan teknologi}
+
+Sembilan lapisan berikut membentuk keseluruhan tumpukan, dari antarmuka hingga lisensi.
 
 \begin{table*}[t]
 \centering
@@ -27,6 +28,9 @@ Lisensi & AGPL-3.0 (bersumber terbuka) \\
 \end{tabular}
 \end{table*}
 
+\FloatBarrier
+Ringkasan arsitektur lengkap ditunjukkan pada \cref{fig:architecture}.
+
 \begin{figure*}[t]
 \centering
 \includegraphics[width=0.85\linewidth]{assets/diagrams/architecture.pdf}
@@ -34,6 +38,7 @@ Lisensi & AGPL-3.0 (bersumber terbuka) \\
 \label{fig:architecture}
 \end{figure*}
 
+\FloatBarrier
 \subsection{Alur otentikasi}
 
 Atlas tidak menggunakan Auth.js/NextAuth maupun cookie httpOnly. Setiap sesi adalah UUID acak (opaque) yang disimpan di basis data dan dikirim lewat header \texttt{Authorization: Bearer}, diverifikasi ulang di backend pada setiap permintaan lewat strategi \texttt{passport-custom}. Pendekatan ini mendukung enam metode masuk sekaligus: kata sandi, tautan ajaib, OTP telepon, kata sandi instans, OAuth2 (Google, GitHub, GitLab, Discord, dan lainnya), serta OIDC/SAML untuk direktori identitas institusi seperti Okta atau Entra ID, semuanya dikonfigurasi lewat Godmode tanpa deploy ulang (\cref{fig:auth-flow}).
@@ -45,6 +50,7 @@ Atlas tidak menggunakan Auth.js/NextAuth maupun cookie httpOnly. Setiap sesi ada
 \label{fig:auth-flow}
 \end{figure*}
 
+\FloatBarrier
 \subsection{Topologi deployment}
 
 Instans produksi Atlas (\texttt{atlas.creations.ren}) berjalan di Railway untuk layanan frontend, backend, dan basis data PostgreSQL terkelola, dengan LiveKit SFU dijalankan terpisah di VPS khusus (media WebRTC sebaiknya tidak berbagi jaringan dengan platform PaaS umum agar latensi suara tetap rendah), dan Cloudflare di depan untuk DNS.
@@ -56,6 +62,7 @@ Instans produksi Atlas (\texttt{atlas.creations.ren}) berjalan di Railway untuk 
 \label{fig:deployment}
 \end{figure*}
 
+\FloatBarrier
 \subsection{Model data inti}
 
 Skema Prisma lengkap mencakup lebih dari 40 tabel; \cref{fig:erd} menunjukkan versi yang disederhanakan untuk melihat relasi inti antara pengguna, proyek, tugas, dan komunikasi.
@@ -66,3 +73,5 @@ Skema Prisma lengkap mencakup lebih dari 40 tabel; \cref{fig:erd} menunjukkan ve
 \caption{Model data inti Atlas (ERD disederhanakan).}
 \label{fig:erd}
 \end{figure*}
+
+\FloatBarrier

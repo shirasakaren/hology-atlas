@@ -15,8 +15,8 @@ c.node(bx, by, bw, bh, "Browser Pengguna", ["Next.js client, tanpa cookie"], mon
 # Tier 2: frontend / livekit / yjs
 fy = 280
 c.node(560, fy, 280, 110, "Frontend", ["Next.js 15 (App Router)", "Render UI + panggilan REST"], mono="pnpm apps/frontend", accent=BLUE, accent_tint=BLUE_50, icon=icon_server)
-c.node(140, fy, 300, 110, "y-websocket", ["Relay sinkronisasi Yjs (CRDT)", "Catatan & whiteboard real-time"], mono="ws — realtime docs", accent=GREEN, accent_tint=GREEN_50, icon=icon_grid)
-c.node(960, fy, 300, 110, "LiveKit SFU + Egress", ["Media WebRTC suara/panggilan", "Egress: rekaman opsional"], mono="webrtc — voice", accent=RED, accent_tint=RED_50, icon=icon_voice)
+c.node(140, fy, 300, 110, "y-websocket", ["Relay sinkronisasi Yjs (CRDT)", "Catatan & whiteboard real-time"], mono="ws: realtime docs", accent=GREEN, accent_tint=GREEN_50, icon=icon_grid)
+c.node(960, fy, 300, 110, "LiveKit SFU + Egress", ["Media WebRTC suara/panggilan", "Egress: rekaman opsional"], mono="webrtc: voice", accent=RED, accent_tint=RED_50, icon=icon_voice)
 
 # Tier 3: backend
 by3 = 450

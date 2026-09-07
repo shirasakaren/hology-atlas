@@ -7,7 +7,7 @@ c.defs_arrowhead(INK4)
 
 c.eyebrow(60, 56, "FITUR APLIKASI")
 c.text(60, 92, "Peta Modul Atlas", size=32, family=F_DISPLAY, weight=700, fill=INK)
-c.text(60, 118, "Satu ruang kerja, tujuh modul — semuanya berjalan di satu instance yang Anda kendalikan penuh.",
+c.text(60, 118, "Satu ruang kerja, tujuh modul, semuanya berjalan di satu instance yang Anda kendalikan penuh.",
         size=14, family=F_SANS, fill=INK3)
 
 items = [

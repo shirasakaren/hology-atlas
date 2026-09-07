@@ -1,5 +1,6 @@
 .DS_Store
 scripts/node_modules/
+__pycache__/
 *.aux
 *.log
 *.out

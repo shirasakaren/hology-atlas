@@ -14,7 +14,7 @@ y_line = 350
 c.raw(f'<line x1="100" y1="{y_line}" x2="1420" y2="{y_line}" stroke="{LINE_STRONG}" stroke-width="3"/>')
 
 milestones = [
-    ("Sekarang", "MVP produksi & self-hostable", "PMO, chat, voice, dokumen real-time, Godmode — berjalan di atlas.creations.ren dengan lisensi AGPL-3.0.", BLUE),
+    ("Sekarang", "MVP produksi & self-hostable", "PMO, chat, voice, dokumen real-time, Godmode: berjalan di atlas.creations.ren dengan lisensi AGPL-3.0.", BLUE),
     ("Jangka Pendek", "Validasi pengguna nyata", "Uji coba bersama organisasi kampus & komunitas, penguatan keamanan, egress rekaman panggilan.", GREEN),
     ("Menengah", "Perluasan jangkauan", "Aplikasi mobile, integrasi kalender & email eksternal, laporan analitik proyek.", YELLOW),
     ("Panjang", "Ekosistem terbuka", "Marketplace plugin/integrasi, federasi multi-instance antar organisasi.", RED),
