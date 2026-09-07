@@ -1,39 +1,25 @@
-\clearpage
-\section[Analisis Kebutuhan dan Desain]{}
-\sectionopener{cblue}{Untuk Siapa Ini Dibuat}{Analisis Kebutuhan dan Desain}{Kebutuhan diturunkan langsung dari peran nyata yang setiap hari memakai Atlas di Laboratorium MGM.}
+\section{Analisis Kebutuhan dan Desain}
 
-\noindent
-\begin{minipage}[t]{0.62\linewidth}
+Kebutuhan diturunkan langsung dari peran nyata yang setiap hari memakai Atlas di Laboratorium MGM.
+
 \subsection{Tiga peran pengguna utama}
 
-\begin{featurecardbox}{cblue}
-{\bricolagesb\fontsize{11.5pt}{14pt}\selectfont\color{cink} Admin instansi}\\[0.2em]
-{\fontsize{9.6pt}{13pt}\selectfont\color{cink2} Mengatur metode masuk, integrasi, dan kebijakan seluruh instans lewat Godmode. Butuh kendali penuh tanpa harus membaca kode.}
-\end{featurecardbox}
-\vspace{0.35em}
-\begin{featurecardbox}{cblue}
-{\bricolagesb\fontsize{11.5pt}{14pt}\selectfont\color{cink} Ketua proyek / koordinator}\\[0.2em]
-{\fontsize{9.6pt}{13pt}\selectfont\color{cink2} Membagi pekerjaan lewat papan Kanban atau linimasa, memantau progres, dan menjaga proyek tidak macet di satu orang.}
-\end{featurecardbox}
-\vspace{0.35em}
-\begin{featurecardbox}{cblue}
-{\bricolagesb\fontsize{11.5pt}{14pt}\selectfont\color{cink} Anggota / kontributor}\\[0.2em]
-{\fontsize{9.6pt}{13pt}\selectfont\color{cink2} Perlu tahu tugas apa yang jadi tanggung jawabnya hari ini, dan bisa berkoordinasi tanpa berpindah aplikasi.}
-\end{featurecardbox}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.34\linewidth}
-\includegraphics[width=\linewidth]{assets/ai/persona-collaboration.png}
-\end{minipage}
+\begin{description}
+\item[Admin instansi.] Mengatur metode masuk, integrasi, dan kebijakan seluruh instans lewat Godmode. Butuh kendali penuh tanpa harus membaca kode.
+\item[Ketua proyek / koordinator.] Membagi pekerjaan lewat papan Kanban atau linimasa, memantau progres, dan menjaga proyek tidak macet di satu orang.
+\item[Anggota / kontributor.] Perlu tahu tugas apa yang jadi tanggung jawabnya hari ini, dan bisa berkoordinasi tanpa berpindah aplikasi.
+\end{description}
 
-\vspace{1em}
 \subsection{Kebutuhan fungsional dan non-fungsional}
 
-\begin{center}
+\begin{table*}[t]
+\centering
+\caption{Kebutuhan fungsional dan non-fungsional Atlas.}
+\label{tab:kebutuhan}
 \small
-\renewcommand{\arraystretch}{1.3}
-\begin{tabular}{@{}p{0.18\linewidth}p{0.78\linewidth}@{}}
+\begin{tabular}{@{}L{3.2cm}L{13cm}@{}}
 \toprule
-\tblhead{Kategori} & \tblhead{Kebutuhan} \\
+\textbf{Kategori} & \textbf{Kebutuhan} \\
 \midrule
 Fungsional & Manajemen tugas multi-tampilan (Kanban/List/Timeline), obrolan real-time, panggilan suara, catatan \& whiteboard kolaboratif, notifikasi terpadu, manajemen peran dan izin \\
 Otentikasi & Minimal enam metode masuk termasuk SSO institusi (SAML/OIDC), tanpa biaya tambahan pada jumlah pengguna berapa pun \\
@@ -43,11 +29,8 @@ Aksesibilitas & Kontras warna lolos audit WCAG otomatis di 24 tema $\times$ 2 mo
 Portabilitas & Dapat di-\textit{deploy} lewat Docker Compose di infrastruktur mana pun, tidak terkunci pada satu penyedia cloud \\
 \bottomrule
 \end{tabular}
-\end{center}
+\end{table*}
 
-\vspace{0.8em}
 \subsection{Desain sebagai kebutuhan, bukan pemanis}
 
-Sistem desain MGM Laboratory (token warna tertutup, tipografi Bricolage Grotesque + Geist, motif geometris satu warna per permukaan) diterapkan konsisten dari landing page hingga panel admin. Ini bukan keputusan kosmetik: produk yang dipakai 65+ orang setiap hari perlu terasa dapat dipercaya dan konsisten, sama seperti alasan tim akhirnya berhenti memakai kombinasi alat yang tampilannya saling bertabrakan.
-
-\clearpage
+Sistem desain MGM Laboratory (token warna tertutup, tipografi Bricolage Grotesque + Geist, motif geometris satu warna per permukaan) diterapkan konsisten dari landing page hingga panel admin Atlas. Ini bukan keputusan kosmetik: produk yang dipakai 65+ orang setiap hari perlu terasa dapat dipercaya dan konsisten, sama seperti alasan tim akhirnya berhenti memakai kombinasi alat yang tampilannya saling bertabrakan.

@@ -48,7 +48,7 @@ for cat in order:
         cap = item['name'].replace('_', ' ').replace('-', ' ')
         lines.append(r'\begin{minipage}[t]{0.315\linewidth}')
         lines.append(r'\includegraphics[width=\linewidth]{%s}\\[0.15em]' % rel)
-        lines.append(r'{\ttfamily\scriptsize\color{cink3} %03d \quad %s}' % (total, cap))
+        lines.append(r'{\ttfamily\scriptsize\color{black!55} %03d \quad %s}' % (total, cap))
         lines.append(r'\end{minipage}')
         if (i + 1) % 3 == 0 and i != n - 1:
             lines.append(r'\par\vspace{0.9em}')

@@ -1,15 +1,18 @@
 \clearpage
-\section[Arsitektur Sistem]{}
-\sectionopener{cblue}{Di Bawah Tenda}{Arsitektur Sistem}{Semua ditulis dengan teknologi produksi yang matang, dipilih untuk keandalan jangka panjang, bukan sekadar demo kompetisi.}
+\section{Arsitektur Sistem}
+
+Semua ditulis dengan teknologi produksi yang matang, dipilih untuk keandalan jangka panjang, bukan sekadar demo kompetisi.
 
 \subsection{Tumpukan teknologi}
 
-\begin{center}
+\begin{table*}[t]
+\centering
+\caption{Tumpukan teknologi Atlas.}
+\label{tab:stack}
 \small
-\renewcommand{\arraystretch}{1.35}
-\begin{tabular}{@{}p{0.24\linewidth}p{0.72\linewidth}@{}}
+\begin{tabular}{@{}L{3.6cm}L{12.6cm}@{}}
 \toprule
-\tblhead{Lapisan} & \tblhead{Teknologi} \\
+\textbf{Lapisan} & \textbf{Teknologi} \\
 \midrule
 Frontend & Next.js 15 (App Router), React 19, TypeScript, TanStack Query, Tailwind \\
 Backend & NestJS 10, TypeScript, Prisma 5 ORM, class-validator \\
@@ -22,30 +25,44 @@ Otentikasi & Sesi opaque tersimpan di basis data, dikirim lewat header \texttt{A
 Lisensi & AGPL-3.0 (bersumber terbuka) \\
 \bottomrule
 \end{tabular}
-\end{center}
+\end{table*}
 
-\diagrambox{assets/diagrams/architecture.pdf}{1}
-\framecaption{Backend menjadi jembatan kontrol; media suara dan sinkronisasi dokumen mengalir langsung antara browser dan sidecar-nya, tidak dibebankan ke backend.}
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.85\linewidth]{assets/diagrams/architecture.pdf}
+\caption{Backend hanya menjadi jembatan kontrol; media suara dan sinkronisasi dokumen mengalir langsung antara browser dan sidecar-nya, tidak dibebankan ke backend.}
+\label{fig:architecture}
+\end{figure*}
 
-\clearpage
 \subsection{Alur otentikasi}
 
-Atlas tidak menggunakan Auth.js/NextAuth maupun cookie httpOnly. Setiap sesi adalah UUID acak (opaque) yang disimpan di basis data dan dikirim lewat header \texttt{Authorization: Bearer}, diverifikasi ulang di backend pada setiap permintaan lewat strategi \texttt{passport-custom}. Pendekatan ini mendukung enam metode masuk sekaligus: kata sandi, tautan ajaib, OTP telepon, kata sandi instans, OAuth2 (Google, GitHub, GitLab, Discord, dan lainnya), serta OIDC/SAML untuk direktori identitas institusi seperti Okta atau Entra ID, semuanya dikonfigurasi lewat Godmode tanpa deploy ulang.
+Atlas tidak menggunakan Auth.js/NextAuth maupun cookie httpOnly. Setiap sesi adalah UUID acak (opaque) yang disimpan di basis data dan dikirim lewat header \texttt{Authorization: Bearer}, diverifikasi ulang di backend pada setiap permintaan lewat strategi \texttt{passport-custom}. Pendekatan ini mendukung enam metode masuk sekaligus: kata sandi, tautan ajaib, OTP telepon, kata sandi instans, OAuth2 (Google, GitHub, GitLab, Discord, dan lainnya), serta OIDC/SAML untuk direktori identitas institusi seperti Okta atau Entra ID, semuanya dikonfigurasi lewat Godmode tanpa deploy ulang (\cref{fig:auth-flow}).
 
-\diagrambox{assets/diagrams/auth-flow.pdf}{0.92}
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.8\linewidth]{assets/diagrams/auth-flow.pdf}
+\caption{Alur otentikasi dan sesi Atlas.}
+\label{fig:auth-flow}
+\end{figure*}
 
-\vspace{1em}
 \subsection{Topologi deployment}
 
 Instans produksi Atlas (\texttt{atlas.creations.ren}) berjalan di Railway untuk layanan frontend, backend, dan basis data PostgreSQL terkelola, dengan LiveKit SFU dijalankan terpisah di VPS khusus (media WebRTC sebaiknya tidak berbagi jaringan dengan platform PaaS umum agar latensi suara tetap rendah), dan Cloudflare di depan untuk DNS.
 
-\diagrambox{assets/diagrams/deployment.pdf}{0.92}
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.8\linewidth]{assets/diagrams/deployment.pdf}
+\caption{Topologi deployment produksi Atlas.}
+\label{fig:deployment}
+\end{figure*}
 
-\clearpage
 \subsection{Model data inti}
 
-Skema Prisma lengkap mencakup lebih dari 40 tabel; berikut versi yang disederhanakan untuk menunjukkan relasi inti antara pengguna, proyek, tugas, dan komunikasi.
+Skema Prisma lengkap mencakup lebih dari 40 tabel; \cref{fig:erd} menunjukkan versi yang disederhanakan untuk melihat relasi inti antara pengguna, proyek, tugas, dan komunikasi.
 
-\diagrambox{assets/diagrams/erd.pdf}{1}
-
-\clearpage
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.92\linewidth]{assets/diagrams/erd.pdf}
+\caption{Model data inti Atlas (ERD disederhanakan).}
+\label{fig:erd}
+\end{figure*}

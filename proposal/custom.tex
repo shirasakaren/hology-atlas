@@ -1,0 +1,16 @@
+% Shared light-touch additions on top of atlas.cls, kept minimal since the
+% class already provides the visual system (newtxtext serif, fcsblue/
+% fcsorange, section styling, figure/table conventions).
+\tcbuselibrary{skins,breakable}
+
+% A single highlighted-insight box style, used sparingly (at most once or
+% twice per document) for a pull-quote-like remark - replaces the old
+% quotebreak/callout boxes with something that reads as academic marginalia
+% rather than a marketing callout.
+\newtcolorbox{remark}{
+  enhanced, breakable,
+  colback = white, colframe = fcsblue,
+  boxrule = 0.6pt, arc = 0pt,
+  left = 8pt, right = 8pt, top = 6pt, bottom = 6pt,
+  borderline west = {2pt}{0pt}{fcsorange},
+}

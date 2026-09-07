@@ -1,34 +1,27 @@
-\clearpage
-\section[Metode Pengembangan]{}
-\sectionopener{cyellow}{Cara Kerja Tim}{Metode Pengembangan}{Atlas dibangun dan terus disempurnakan lewat siklus iteratif pendek, ditarik langsung dari kebutuhan nyata pemakainya sendiri.}
+\section{Metode Pengembangan}
 
-\noindent
-\begin{minipage}[t]{0.55\linewidth}
-Karena tim pengembang adalah juga pengguna utama Atlas (anggota Laboratorium MGM), setiap siklus pengembangan dimulai dari gesekan nyata yang dialami sehari-hari, bukan asumsi di atas kertas. Pendekatan ini mendekati \textit{dogfooding} ala tim produk profesional: fitur diuji oleh pemakainya sendiri sebelum dianggap selesai.
+Atlas dibangun dan terus disempurnakan lewat siklus iteratif pendek, ditarik langsung dari kebutuhan nyata pemakainya sendiri. Karena tim pengembang adalah juga pengguna utama Atlas (anggota Laboratorium MGM), setiap siklus pengembangan dimulai dari gesekan nyata yang dialami sehari-hari, bukan asumsi di atas kertas. Pendekatan ini mendekati \textit{dogfooding} ala tim produk profesional: fitur diuji oleh pemakainya sendiri sebelum dianggap selesai.
 
-\vspace{0.6em}
-\begin{enumerate}[leftmargin=1.3em]
+\begin{enumerate}
   \item \textbf{Temukan}: masalah diangkat dari keluhan atau kebutuhan nyata pengguna internal.
-  \item \textbf{Rancang}: solusi diselaraskan dengan sistem desain MGM Laboratory yang sudah baku (token warna, tipografi, motif geometris).
+  \item \textbf{Rancang}: solusi diselaraskan dengan sistem desain MGM Laboratory yang sudah baku (token warna, tipografi, motif geometris) yang dipakai di seluruh antarmuka Atlas.
   \item \textbf{Bangun}: implementasi di monorepo pnpm (frontend Next.js, backend NestJS), dengan tipe data yang disinkronkan lewat Prisma.
   \item \textbf{Uji}: audit otomatis (Jest untuk backend, Playwright + axe-core untuk audit UI lintas breakpoint dan aksesibilitas WCAG) sebelum rilis.
   \item \textbf{Rilis}: continuous deployment ke instans produksi yang sama yang dipakai laboratorium sehari-hari.
   \item \textbf{Pelajari}: masukan pemakai nyata langsung membentuk siklus berikutnya.
 \end{enumerate}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.4\linewidth}
-\includegraphics[width=\linewidth]{assets/ai/opener-metode-pengembangan.png}
-\end{minipage}
 
-\vspace{1em}
-\diagrambox{assets/diagrams/metode-cycle.pdf}{0.85}
-\framecaption{Enam tahap yang berulang untuk setiap fitur baru maupun perbaikan.}
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.62\linewidth]{assets/diagrams/metode-cycle.pdf}
+\caption{Enam tahap yang berulang untuk setiap fitur baru maupun perbaikan.}
+\label{fig:metode-cycle}
+\end{figure*}
 
 \subsection{Perkakas dan jaminan kualitas}
 
-\noindent
-\begin{minipage}[t]{0.31\linewidth}\featurecard{cyellow}{Monorepo terstruktur}{pnpm workspace dengan \texttt{apps/frontend} dan \texttt{apps/backend}, CI berbasis path filter agar hanya bagian yang berubah yang diuji ulang.}\end{minipage}\hfill
-\begin{minipage}[t]{0.31\linewidth}\featurecard{cyellow}{Pengujian berlapis}{Jest untuk logika backend, Playwright untuk alur pengguna end-to-end, axe-core untuk audit aksesibilitas WCAG 2.1 AA otomatis.}\end{minipage}\hfill
-\begin{minipage}[t]{0.31\linewidth}\featurecard{cyellow}{Migrasi basis data aditif}{Skema Prisma berkembang lewat migrasi yang selalu aditif, dijalankan otomatis (\texttt{migrate deploy}) setiap deployment produksi.}\end{minipage}
-
-\clearpage
+\begin{description}
+\item[Monorepo terstruktur.] pnpm workspace dengan \texttt{apps/frontend} dan \texttt{apps/backend}, CI berbasis path filter agar hanya bagian yang berubah yang diuji ulang.
+\item[Pengujian berlapis.] Jest untuk logika backend, Playwright untuk alur pengguna end-to-end, axe-core untuk audit aksesibilitas WCAG 2.1 AA otomatis.
+\item[Migrasi basis data aditif.] Skema Prisma berkembang lewat migrasi yang selalu aditif, dijalankan otomatis (\texttt{migrate deploy}) setiap deployment produksi.
+\end{description}

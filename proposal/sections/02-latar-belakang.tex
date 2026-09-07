@@ -1,39 +1,15 @@
-\clearpage
-\section[Latar Belakang]{}
-\sectionopener{cred}{Masalah Nyata}{Latar Belakang}{Cerita di balik Atlas bukan dimulai dari ide kompetisi, melainkan dari kebutuhan operasional sehari-hari sebuah laboratorium kampus.}
+\section{Latar Belakang}
 
 Laboratorium MGM di Fakultas Ilmu Komputer, Universitas Brawijaya, adalah tempat lebih dari 65 mahasiswa mengerjakan puluhan proyek internal sekaligus, mulai dari pengembangan layanan internal, riset, hingga dukungan operasional laboratorium. Ketua tim proposal ini sendiri ditugaskan membangun layanan internal laboratorium, dan di situlah masalahnya mulai terasa: tidak ada sistem manajemen proyek (PMO) yang layak, dan spreadsheet Excel sama sekali tidak cukup untuk melacak siapa mengerjakan apa, kapan tenggatnya, dan di tahap mana sebuah proyek berada.
 
-\vspace{0.3em}
 \subsection{Tiga jalan buntu yang sudah dicoba}
 
-\begin{featurecardbox}{cred}
-{\bricolagesb\fontsize{11.5pt}{14pt}\selectfont\color{cink} SaaS berbayar (Jira, ClickUp, Asana)}\\[0.25em]
-{\fontsize{9.6pt}{13pt}\selectfont\color{cink2} Fungsional dan matang, tetapi harga per-pengguna per-bulan langsung membengkak tidak wajar begitu dikalikan 65+ anggota lintas proyek, anggaran yang tidak realistis untuk laboratorium kampus nirlaba.}
-\end{featurecardbox}
+\begin{description}
+\item[SaaS berbayar (Jira, ClickUp, Asana).] Fungsional dan matang, tetapi harga per-pengguna per-bulan langsung membengkak tidak wajar begitu dikalikan 65+ anggota lintas proyek, anggaran yang tidak realistis untuk laboratorium kampus nirlaba.
+\item[Self-hosted terbatas (Plane).] Bisa di-\textit{self-host}, tetapi tetap mengenakan biaya begitu jumlah pengguna melewati ambang tertentu, dan fitur Single Sign-On (SAML/OIDC), yang dibutuhkan agar seluruh anggota bisa masuk dengan akun institusi, terkunci di paket berbayar.
+\item[Komunikasi terpisah dari kerja (Slack / Microsoft Teams).] Hampir semua alat manajemen proyek yang dievaluasi tidak menyertakan obrolan tim, sehingga laboratorium harus berlangganan alat komunikasi terpisah, membayar dua kali untuk dua kebutuhan yang sebenarnya saling terkait erat.
+\end{description}
 
-\vspace{0.4em}
-\begin{featurecardbox}{cred}
-{\bricolagesb\fontsize{11.5pt}{14pt}\selectfont\color{cink} Self-hosted terbatas (Plane)}\\[0.25em]
-{\fontsize{9.6pt}{13pt}\selectfont\color{cink2} Bisa di-\textit{self-host}, tetapi tetap mengenakan biaya begitu jumlah pengguna melewati ambang tertentu, dan fitur Single Sign-On (SAML/OIDC), yang dibutuhkan agar seluruh anggota bisa masuk dengan akun institusi, terkunci di paket berbayar.}
-\end{featurecardbox}
-
-\vspace{0.4em}
-\begin{featurecardbox}{cred}
-{\bricolagesb\fontsize{11.5pt}{14pt}\selectfont\color{cink} Komunikasi terpisah dari kerja (Slack / Microsoft Teams)}\\[0.25em]
-{\fontsize{9.6pt}{13pt}\selectfont\color{cink2} Hampir semua alat manajemen proyek yang dievaluasi tidak menyertakan obrolan tim, sehingga laboratorium harus berlangganan alat komunikasi terpisah, membayar dua kali untuk dua kebutuhan yang sebenarnya saling terkait erat.}
-\end{featurecardbox}
-
-\vspace{0.9em}
 \subsection{Keputusan: bangun sendiri, dan bagikan}
 
-Setelah tiga jalan tersebut mentok, tim memutuskan untuk membangun platform sendiri yang menyatukan manajemen proyek dan komunikasi tim dalam satu aplikasi yang benar-benar bisa dimiliki oleh laboratorium: di-\textit{self-host} di infrastruktur sendiri, tanpa batas jumlah pengguna, dan tanpa fitur yang dikunci di balik paket berbayar. Karena masalah ini jelas tidak unik milik Laboratorium MGM saja: setiap komunitas, himpunan mahasiswa, dan startup tahap awal di Indonesia kemungkinan besar menghadapi pilihan yang sama antara membayar mahal atau bekerja dengan alat seadanya, sehingga Atlas dilepas sebagai perangkat lunak bersumber terbuka di bawah lisensi AGPL-3.0, gratis untuk siapa pun menjalankan dan memodifikasinya.
-
-\vspace{0.6em}
-\noindent
-\begin{minipage}[t]{0.24\linewidth}\statcard{cred}{65+}{Anggota lab}\end{minipage}%
-\begin{minipage}[t]{0.26\linewidth}\statcard{cred}{3}{Alat dicoba \& ditolak}\end{minipage}%
-\begin{minipage}[t]{0.26\linewidth}\statcard{cred}{2x}{Biaya bila terpisah}\end{minipage}%
-\begin{minipage}[t]{0.24\linewidth}\statcard{cgreen}{Rp0}{Biaya lisensi Atlas}\end{minipage}
-
-\clearpage
+Setelah tiga jalan tersebut mentok, tim memutuskan untuk membangun platform sendiri yang menyatukan manajemen proyek dan komunikasi tim dalam satu aplikasi yang benar-benar bisa dimiliki oleh laboratorium: di-\textit{self-host} di infrastruktur sendiri, tanpa batas jumlah pengguna, dan tanpa fitur yang dikunci di balik paket berbayar. Karena masalah ini jelas tidak unik milik Laboratorium MGM saja, setiap komunitas, himpunan mahasiswa, dan startup tahap awal di Indonesia kemungkinan besar menghadapi pilihan yang sama antara membayar mahal atau bekerja dengan alat seadanya, Atlas dilepas sebagai perangkat lunak bersumber terbuka di bawah lisensi AGPL-3.0, gratis untuk siapa pun menjalankan dan memodifikasinya. Sebagai gambaran skala persoalan: laboratorium menaungi \textbf{65+} anggota aktif, telah mencoba dan menolak \textbf{3} kategori alat berbayar, akan menanggung kurang lebih \textbf{dua kali lipat} biaya bila alat manajemen proyek dan komunikasi tetap dibeli terpisah, dan kini menjalankan semuanya dengan biaya lisensi \textbf{Rp0} lewat Atlas.

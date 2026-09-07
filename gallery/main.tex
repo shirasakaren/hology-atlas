@@ -1,20 +1,45 @@
 \documentclass[9pt,a4paper]{article}
-\input{../proposal/preamble.tex}
+\usepackage[margin=18mm]{geometry}
+\usepackage{newtxtext,newtxmath}
+\usepackage{graphicx}
+\usepackage[colorlinks,linkcolor=fcsblue,urlcolor=fcsblue]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{eso-pic}
+
+\definecolor{fcsblue}{RGB}{0,46,166}
+\definecolor{fcsorange}{RGB}{191,77,0}
+
+\graphicspath{{../proposal/figures/}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\textcolor{fcsblue}{Atlas -- Galeri Tangkapan Layar}}
+\fancyhead[R]{\small\textcolor{fcsblue}{HOLOGY 9.0 HoloDev}}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+\AddToShipoutPictureBG*{%
+  \begin{tikzpicture}[remember picture, overlay, every node/.style={inner sep=0pt}]
+    \node[anchor=north east, xshift=-18mm, yshift=-14mm] at (current page.north east)
+      {\includegraphics{logo.pdf}};
+  \end{tikzpicture}
+}
 
 \begin{document}
 \thispagestyle{empty}
-\vspace*{1.5cm}
-\noindent\raisebox{-0.16em}{\includegraphics[height=26pt]{../proposal/assets/atlas-mark.pdf}}\hspace{8pt}%
-{\bricolagexb\fontsize{34pt}{34pt}\selectfont\color{cink}Atlas}
-
-\vspace{0.4cm}
-\noindent{\bricolagesb\fontsize{16pt}{20pt}\selectfont\color{cink2} Galeri Tangkapan Layar Lengkap}
+\vspace*{1.2cm}
+{\Huge\bfseries\textcolor{fcsblue}{Atlas}}
 
 \vspace{0.3cm}
-\noindent{\fontsize{10.5pt}{15pt}\selectfont\color{cink3} Dokumen pendukung teknis untuk proposal HOLOGY 9.0 HoloDev, tim MGM Unjuk Diri Dulu. Berisi 79 tangkapan layar dari instans produksi Atlas (\url{https://atlas.creations.ren}), diambil langsung dari aplikasi yang berjalan, bukan mockup. Dua puluh empat hingga dua puluh delapan tangkapan layar terbaik sudah dikurasi dan ditampilkan langsung di dalam proposal utama; dokumen ini melengkapi dengan cakupan penuh seluruh modul untuk keperluan verifikasi teknis oleh dewan juri.}
+{\Large Galeri Tangkapan Layar Lengkap}
 
-\vspace{0.5cm}
-\noindent\textcolor{cline}{\rule{\linewidth}{0.8pt}}
+\vspace{0.4cm}
+Dokumen pendukung teknis untuk proposal HOLOGY 9.0 HoloDev, tim MGM Unjuk Diri Dulu. Berisi 79 tangkapan layar dari instans produksi Atlas (\url{https://atlas.creations.ren}), diambil langsung dari aplikasi yang berjalan, bukan mockup. Dua puluh enam tangkapan layar terbaik sudah dikurasi dan ditampilkan langsung di dalam proposal utama; dokumen ini melengkapi dengan cakupan penuh seluruh modul untuk keperluan verifikasi teknis oleh dewan juri.
+
+\vspace{0.4cm}
+\noindent\textcolor{fcsblue!30}{\rule{\linewidth}{0.8pt}}
 
 \input{gallery-body.tex}
 

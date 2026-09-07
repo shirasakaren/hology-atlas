@@ -1,11 +1,45 @@
-\documentclass[10pt,a4paper]{article}
-\input{preamble.tex}
+% !TeX program = xetex
+\documentclass[research]{atlas}
+\usepackage{subfig}
+\usepackage{hyperref}
+\input{custom.tex}
+
+% ---------------------------------------------------------------
+% Repurpose the FCS masthead machinery for a competition proposal:
+% - article type badge -> "PROPOSAL HOLODEV 9.0" (no FCS category fits)
+% - DOI line -> the lab's real publications link (atlas.cls already
+%   drops the "https://doi.org/" prefix, see the DOI URL string edit)
+% ---------------------------------------------------------------
+\ExplSyntaxOn
+\tl_gset:Nn \g__fcs_article_type_tl { PROPOSAL~HOLODEV~9.0 }
+\ExplSyntaxOff
+
+\title{Atlas: Platform Kolaborasi Tim yang Terintegrasi dan Bersumber Terbuka}
+\shorttitle{Atlas}
+
+\author[1,+]{Muhammad~Idham~Ma'arif}
+\author[1]{Syafa~Hadyan~Rasendriya}
+\author[1]{Nurul~Inayah}
+\address[1]{Laboratorium MGM, Fakultas Ilmu Komputer, Universitas Brawijaya. Ruang 10.5 Gedung F FILKOM, Ketawanggede, Kec.\ Lowokwaru, Kota Malang, Jawa Timur 65145}
+
+\corremail{ren@shirasaka.ren}
+
+\fcssetup{
+  doi           = {https://publications.ren/atlas},
+  received      = {produksi sejak Agustus 2026},
+  accepted      = {diajukan untuk HOLOGY 9.0, 7 September 2026},
+  copyright     = {\textcopyright\ Laboratorium MGM, Universitas Brawijaya, 2026},
+  article-id    = {HoloDev},
+  first-page    = {1},
+}
+
+\begin{abstract}
+Laboratorium MGM di Fakultas Ilmu Komputer, Universitas Brawijaya, mempunyai lebih dari 65 anggota yang mempunyai dan mengembangkan berbagai macam proyek. Selama ini, komunikasi dan management hanya mengandalkan spreadsheet atau excel dan pesan WhatsApp maupun Discord. Cara tersebut akan susah scale atau berkembang seiring bertambahnya proyek, dikarenakan kompleksitas yang meningkat. Tim sempat mencoba berlangganan Jira, ClickUp, dan Asana, namun biaya per-pengguna per-bulan tidak wajar untuk skala organisasi yang mempunyai budget minim. Opsi self-hosted seperti Plane juga sudah dicoba, namun tetap terdapat biaya ketika jumlah pengguna melewati batas tertentu, dan tidak menyediakan SSO (SAML/OIDC) dengan paket gratis. Ditambah lagi, hampir semua \textit{project management tools} (PMO) proyek yang dicoba tidak ada yang menyertakan platform komunikasi, sehingga kami tetap harus membayar Slack atau Microsoft Teams secara terpisah untuk berkomunikasi. \textbf{Atlas} dibuat untuk menyelesaikan persoalan tersebut. Atlas adalah sebuah platform kolaborasi tim yang menyatukan manajemen proyek (PMO, mencakup \textit{kanban board}, \textit{list view}, dan \textit{gantt chart}) dengan sistem komunikasi real-time (RTC), \textit{voice call}, catatan dan whiteboard yang bisa dipakai secara kolaboratif, dalam satu aplikasi yang dapat di-\textit{self-host}, \textit{open source} di bawah lisensi AGPL-3.0, dan tidak punya batasan jumlah pengguna ataupun fitur berbayar. Setiap organisasi cukup menjalankan Atlas di infrastruktur mereka sendiri, mempunyai kendali penuh atas data dari aplikasi, dan tanpa biaya untuk alat manajemen proyek dan alat komunikasi yang terpisah. \textit{Unique selling point} Atlas dibandingkan hanya prototipe untuk kompetisi HOLOGY adalah statusnya hari ini: aplikasi ini \textbf{sudah berjalan secara produksi} dan digunakan sehari-hari oleh seluruh anggota Laboratorium MGM untuk memanage baik project pribadi maupun project di laboratorium, mulai dari perencanaan, koordinasi tim, hingga komunikasi, bukan sekadar demo yang dibangun untuk perlombaan. Godmode, panel kendali swa-hosting Atlas, memungkinkan admin untuk mengatur segala hal yang ada di Atlas (kata sandi, \textit{magic link}, OTP telepon, OAuth, OIDC, SAML), \textit{file storage}, dan tema tampilan tanpa menyentuh kode maupun \textit{env file}. Atlas mengambil subtema \textbf{Ekonomi Digital} HOLOGY 9.0: Atlas menunjukkan bahwa organisasi Indonesia (laboratorium kampus, komunitas, maupun startup) tidak perlu terikat pada \textit{subscription SaaS} yang mahal untuk tetap produktif. Dengan membuat biaya operasional nol, yang sebelumnya digunakan ke banyak SaaS sekaligus menjaga \textit{data sovereignty}, Atlas berkontribusi langsung pada pertumbuhan ekosistem digital yang inklusif, berdaya saing, dan berkelanjutan bagi tim-tim di Indonesia.
+\end{abstract}
+\keywords{Manajemen proyek; Kolaborasi tim; Self-hosted; Sumber terbuka; Ekonomi digital}
 
 \begin{document}
 
-\input{sections/00-cover.tex}
-\input{sections/00b-daftar-isi.tex}
-\input{sections/01-abstrak.tex}
 \input{sections/02-latar-belakang.tex}
 \input{sections/03-tujuan-manfaat.tex}
 \input{sections/04-fitur-aplikasi.tex}
@@ -14,6 +48,8 @@
 \input{sections/07-arsitektur-sistem.tex}
 \input{sections/08-mockup.tex}
 \input{sections/09-rencana-implementasi.tex}
+
+\fontsize{8.5pt}{10pt}\selectfont
 \input{sections/10-lampiran.tex}
 
 \end{document}

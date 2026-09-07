@@ -1,90 +1,74 @@
-\clearpage
-\section[Fitur Aplikasi]{}
-\sectionopener{cblue}{Yang Sudah Berjalan}{Fitur Aplikasi}{Tujuh modul yang saling terhubung, semuanya berjalan dalam satu instans Atlas yang sama, bukan produk terpisah yang disatukan secara paksa.}
+\section{Fitur Aplikasi}
 
-\diagrambox{assets/diagrams/feature-map.pdf}{1}
-\framecaption{Peta fitur Atlas: setiap modul berbagi identitas pengguna, notifikasi, dan pencarian yang sama.}
+Tujuh modul yang saling terhubung, semuanya berjalan dalam satu instans Atlas yang sama, bukan produk terpisah yang disatukan secara paksa.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.72\linewidth]{assets/diagrams/feature-map.pdf}
+\caption{Peta fitur Atlas. Setiap modul berbagi identitas pengguna, notifikasi, dan pencarian yang sama.}
+\label{fig:feature-map}
+\end{figure*}
 
 \subsection{Manajemen Proyek (PMO)}
 
-Setiap proyek memiliki daftar tugas yang bisa ditampilkan sebagai papan Kanban, tabel daftar, atau linimasa Gantt, lengkap dengan status, prioritas, penanggung jawab, dan tenggat waktu. Kunci penomoran tugas (mis. \texttt{NO10-14}) tetap unik dan berurutan per proyek meskipun tugas tersebar di banyak daftar berbeda.
+Setiap proyek memiliki daftar tugas yang bisa ditampilkan sebagai papan Kanban, tabel daftar, atau linimasa Gantt, lengkap dengan status, prioritas, penanggung jawab, dan tenggat waktu. Kunci penomoran tugas (mis.\ \texttt{NO10-14}) tetap unik dan berurutan per proyek meskipun tugas tersebar di banyak daftar berbeda (\cref{fig:pmo}).
 
-\noindent
-\begin{minipage}[t]{0.63\linewidth}
-\atlasframe{/projects/northstar-studio/lists/product-delivery/kanban}{assets/screenshots/curated/pmo-kanban.png}{1}
-\framecaption{Papan Kanban dengan kolom Backlog, In Progress, In Review, dan Done.}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.34\linewidth}
-\atlasframe{/.../tasks/NO10-2}{assets/screenshots/curated/pmo-task-detail.png}{1}
-\framecaption{Detail tugas dibuka sebagai modal di atas papan, tanpa kehilangan konteks.}
-\end{minipage}
+\begin{figure*}[t]
+\centering
+\subfloat[Papan Kanban dengan kolom Backlog, In Progress, In Review, dan Done.]{\includegraphics[width=0.485\linewidth]{assets/screenshots/curated/pmo-kanban.png}}\hfill
+\subfloat[Detail tugas dibuka sebagai modal di atas papan, tanpa kehilangan konteks.]{\includegraphics[width=0.485\linewidth]{assets/screenshots/curated/pmo-task-detail.png}}\\[4pt]
+\subfloat[Linimasa Gantt untuk melihat jadwal seluruh tugas sekaligus.]{\includegraphics[width=0.485\linewidth]{assets/screenshots/curated/pmo-timeline.png}}\hfill
+\subfloat[Whiteboard kolaboratif real-time (Yjs CRDT) untuk pemetaan ide.]{\includegraphics[width=0.485\linewidth]{assets/screenshots/curated/pmo-whiteboard.png}}
+\caption{Empat tampilan modul PMO pada proyek yang sama.}
+\label{fig:pmo}
+\end{figure*}
 
-\vspace{0.5em}
-\noindent
-\begin{minipage}[t]{0.48\linewidth}
-\atlasframe{/.../timeline}{assets/screenshots/curated/pmo-timeline.png}{1}
-\framecaption{Linimasa Gantt untuk melihat jadwal seluruh tugas sekaligus.}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.48\linewidth}
-\atlasframe{/.../whiteboards}{assets/screenshots/curated/pmo-whiteboard.png}{1}
-\framecaption{Whiteboard kolaboratif real-time (Yjs CRDT) untuk pemetaan ide.}
-\end{minipage}
-
-\clearpage
 \subsection{Obrolan Tim dan Panggilan Suara}
 
 Setiap proyek memiliki kanal obrolannya sendiri, ditambah ruang obrolan lintas-tim (\textit{global}) untuk komunikasi seluruh organisasi. Pesan mendukung mention (\texttt{@nama}), reaksi emoji, stiker, lampiran berkas, dan pin. Panggilan suara berjalan lewat LiveKit (WebRTC), langsung antara peserta tanpa melewati server backend sebagai perantara media.
 
-\noindent
-\begin{minipage}[t]{0.48\linewidth}
-\atlasframe{/projects/northstar-studio/chat}{assets/screenshots/curated/chat-project.png}{1}
-\framecaption{Obrolan proyek dengan mention, reaksi, dan lampiran.}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.48\linewidth}
-\atlasframe{/voice/community-room}{assets/screenshots/curated/voice-room.png}{1}
-\framecaption{Ruang suara real-time dengan kontrol mikrofon dan peserta aktif.}
-\end{minipage}
+\begin{figure*}[t]
+\centering
+\subfloat[Obrolan proyek dengan mention, reaksi, dan lampiran.]{\includegraphics[width=0.485\linewidth]{assets/screenshots/curated/chat-project.png}}\hfill
+\subfloat[Ruang suara real-time dengan kontrol mikrofon dan peserta aktif.]{\includegraphics[width=0.485\linewidth]{assets/screenshots/curated/voice-room.png}}
+\caption{Komunikasi tim: obrolan dan panggilan suara.}
+\label{fig:chat-voice}
+\end{figure*}
 
-\vspace{1em}
 \subsection{Godmode: Panel Kendali Swa-hosting}
 
 Godmode adalah panel superadmin yang membuat Atlas benar-benar layak dipakai organisasi lain tanpa bantuan developer: metode masuk, penyedia OAuth/SSO, penyimpanan berkas, tema tampilan, dan modul fitur, semuanya diatur lewat antarmuka, bukan berkas \texttt{.env}.
 
-\noindent
-\begin{minipage}[t]{0.48\linewidth}
-\atlasframe{/godmode}{assets/screenshots/curated/godmode-overview.png}{1}
-\framecaption{Ringkasan status instans dan progres konfigurasi awal.}
-\end{minipage}\hfill
-\begin{minipage}[t]{0.48\linewidth}
-\atlasframe{/godmode\#oauth}{assets/screenshots/curated/godmode-oauth.png}{1}
-\framecaption{Penyedia OAuth (Google, GitHub, Discord, dan lainnya) diaktifkan tanpa deploy ulang.}
-\end{minipage}
+\begin{figure*}[t]
+\centering
+\subfloat[Ringkasan status instans dan progres konfigurasi awal.]{\includegraphics[width=0.485\linewidth]{assets/screenshots/curated/godmode-overview.png}}\hfill
+\subfloat[Penyedia OAuth (Google, GitHub, Discord, dan lainnya) diaktifkan tanpa deploy ulang.]{\includegraphics[width=0.485\linewidth]{assets/screenshots/curated/godmode-oauth.png}}
+\caption{Godmode: ringkasan instans dan konfigurasi OAuth.}
+\label{fig:godmode}
+\end{figure*}
 
-\clearpage
 \subsection{24 Tema, Terang dan Gelap}
 
-Setiap pengguna dapat memilih temanya sendiri dari 24 palet warna (masing-masing punya mode terang dan gelap), atau mengikuti tema bawaan yang ditetapkan admin. Seluruh tema melewati audit kontras WCAG otomatis sebelum bisa dirilis.
+Setiap pengguna dapat memilih temanya sendiri dari 24 palet warna (masing-masing punya mode terang dan gelap), atau mengikuti tema bawaan yang ditetapkan admin. Seluruh tema melewati audit kontras WCAG otomatis sebelum bisa dirilis (\cref{fig:themes}).
 
-\vspace{0.5em}
-\noindent
-\begin{minipage}[t]{0.24\linewidth}\includegraphics[width=\linewidth]{assets/screenshots/curated/theme-atlas.png}\\[0.2em]{\geistmono\fontsize{7.5pt}{9pt}\selectfont\color{cink3}\centering ATLAS BLUE\par}\end{minipage}%
-\begin{minipage}[t]{0.24\linewidth}\includegraphics[width=\linewidth]{assets/screenshots/curated/theme-sunset.png}\\[0.2em]{\geistmono\fontsize{7.5pt}{9pt}\selectfont\color{cink3}\centering SUNSET\par}\end{minipage}%
-\begin{minipage}[t]{0.24\linewidth}\includegraphics[width=\linewidth]{assets/screenshots/curated/theme-mint.png}\\[0.2em]{\geistmono\fontsize{7.5pt}{9pt}\selectfont\color{cink3}\centering MINT\par}\end{minipage}%
-\begin{minipage}[t]{0.24\linewidth}\includegraphics[width=\linewidth]{assets/screenshots/curated/theme-lavender.png}\\[0.2em]{\geistmono\fontsize{7.5pt}{9pt}\selectfont\color{cink3}\centering LAVENDER\par}\end{minipage}
+\begin{figure*}[t]
+\centering
+\subfloat[Atlas Blue]{\includegraphics[width=0.24\linewidth]{assets/screenshots/curated/theme-atlas.png}}\hfill
+\subfloat[Sunset]{\includegraphics[width=0.24\linewidth]{assets/screenshots/curated/theme-sunset.png}}\hfill
+\subfloat[Mint]{\includegraphics[width=0.24\linewidth]{assets/screenshots/curated/theme-mint.png}}\hfill
+\subfloat[Lavender]{\includegraphics[width=0.24\linewidth]{assets/screenshots/curated/theme-lavender.png}}\\[4pt]
+\subfloat[Deep Ocean]{\includegraphics[width=0.24\linewidth]{assets/screenshots/curated/theme-ocean.png}}\hfill
+\subfloat[Rose]{\includegraphics[width=0.24\linewidth]{assets/screenshots/curated/theme-rose.png}}\hfill
+\subfloat[Midnight (gelap)]{\includegraphics[width=0.24\linewidth]{assets/screenshots/curated/theme-midnight.png}}\hfill
+\subfloat[Noir (gelap)]{\includegraphics[width=0.24\linewidth]{assets/screenshots/curated/theme-noir.png}}
+\caption{Delapan dari 24 tema yang tersedia, termasuk dua mode gelap.}
+\label{fig:themes}
+\end{figure*}
 
-\vspace{0.45em}
-\noindent
-\begin{minipage}[t]{0.24\linewidth}\includegraphics[width=\linewidth]{assets/screenshots/curated/theme-ocean.png}\\[0.2em]{\geistmono\fontsize{7.5pt}{9pt}\selectfont\color{cink3}\centering DEEP OCEAN\par}\end{minipage}%
-\begin{minipage}[t]{0.24\linewidth}\includegraphics[width=\linewidth]{assets/screenshots/curated/theme-rose.png}\\[0.2em]{\geistmono\fontsize{7.5pt}{9pt}\selectfont\color{cink3}\centering ROSE\par}\end{minipage}%
-\begin{minipage}[t]{0.24\linewidth}\includegraphics[width=\linewidth]{assets/screenshots/curated/theme-midnight.png}\\[0.2em]{\geistmono\fontsize{7.5pt}{9pt}\selectfont\color{cink3}\centering MIDNIGHT (GELAP)\par}\end{minipage}%
-\begin{minipage}[t]{0.24\linewidth}\includegraphics[width=\linewidth]{assets/screenshots/curated/theme-noir.png}\\[0.2em]{\geistmono\fontsize{7.5pt}{9pt}\selectfont\color{cink3}\centering NOIR (GELAP)\par}\end{minipage}
-
-\vspace{1.1em}
 \subsection{Ringkasan modul lainnya}
 
-\noindent
-\begin{minipage}[t]{0.31\linewidth}\featurecard{cblue}{Admin console}{Pengelolaan tag, peran kolaborasi, sticker, dan feature flag untuk operasional harian di luar Godmode.}\end{minipage}\hfill
-\begin{minipage}[t]{0.31\linewidth}\featurecard{cblue}{Catatan real-time}{Editor dokumen kolaboratif (BlockNote + Yjs) per daftar tugas, untuk brief, notulen, dan dokumentasi hidup.}\end{minipage}\hfill
-\begin{minipage}[t]{0.31\linewidth}\featurecard{cblue}{Notifikasi terpadu}{Satu pusat notifikasi untuk mention, penugasan tugas, dan pembaruan proyek, lintas seluruh modul.}\end{minipage}
-
-\clearpage
+\begin{description}
+\item[Admin console.] Pengelolaan tag, peran kolaborasi, sticker, dan feature flag untuk operasional harian di luar Godmode.
+\item[Catatan real-time.] Editor dokumen kolaboratif (BlockNote + Yjs) per daftar tugas, untuk brief, notulen, dan dokumentasi hidup.
+\item[Notifikasi terpadu.] Satu pusat notifikasi untuk mention, penugasan tugas, dan pembaruan proyek, lintas seluruh modul.
+\end{description}

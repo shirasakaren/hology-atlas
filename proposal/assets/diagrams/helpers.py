@@ -1,29 +1,39 @@
 """Shared SVG primitives for the Atlas/HOLOGY proposal diagrams.
-Design tokens copied verbatim from ~/lab/design-system/DESIGN_SYSTEM.md
+Restyled to match the FCS academic-journal template (atlas.cls): thin-line
+technical diagrams, sparse two-color palette (blue primary, orange only for
+emphasis), serif headings to match newtxtext body text.
 """
 
-INK = "#0e1116"
-INK2 = "#3b4150"
-INK3 = "#6b7280"
-INK4 = "#9aa1ad"
-LINE = "#ececea"
-LINE_STRONG = "#d8d8d2"
+INK = "#1a1a1a"
+INK2 = "#3d3d3d"
+INK3 = "#6b6b6b"
+INK4 = "#9a9a9a"
+LINE = "#c9c9c9"
+LINE_STRONG = "#8a8a8a"
 SURFACE = "#ffffff"
-SURFACE_MUTED = "#f7f7f5"
-SURFACE_INVERSE = "#0e1116"
+SURFACE_MUTED = "#f2f2f2"
+SURFACE_INVERSE = "#1a1a1a"
 
-BLUE = "#3a6dc5"
-YELLOW = "#f7bf33"
-RED = "#f94141"
-GREEN = "#0f8657"
-BLUE_50 = "#ecf1fa"
-YELLOW_50 = "#fef6e0"
-RED_50 = "#fee5e5"
-GREEN_50 = "#e2f1ea"
+FCSBLUE = "#002EA6"
+FCSORANGE = "#BF4D00"
 
-F_DISPLAY = "Bricolage Grotesque"
-F_SANS = "Geist"
-F_MONO = "Geist Mono"
+# Legacy names kept so gen_*.py scripts need no edits: collapse the old
+# 4-hue category system onto the new 2-color academic palette (blue does
+# double duty for "core"/"data" categories, orange is reserved for the
+# emphasis category - matches how the old scripts used RED for
+# voice/security-sensitive nodes).
+BLUE = FCSBLUE
+GREEN = FCSBLUE
+YELLOW = INK3
+RED = FCSORANGE
+BLUE_50 = "#e8ecf7"
+YELLOW_50 = SURFACE_MUTED
+RED_50 = "#f5e9e0"
+GREEN_50 = "#e8ecf7"
+
+F_DISPLAY = "Times New Roman"
+F_SANS = "Times New Roman"
+F_MONO = "Courier New"
 
 
 class Canvas:
@@ -34,56 +44,55 @@ class Canvas:
     def raw(self, s):
         self.body.append(s)
 
-    def rect(self, x, y, w, h, fill=SURFACE, stroke=LINE, sw=1.5, rx=16):
+    def rect(self, x, y, w, h, fill=SURFACE, stroke=LINE, sw=1, rx=3):
         self.raw(
             f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="{rx}" '
             f'fill="{fill}" stroke="{stroke}" stroke-width="{sw}"/>'
         )
 
     def text(self, x, y, s, size=16, family=F_SANS, weight=400, fill=INK,
-              anchor="start", spacing=None, upper=False):
+              anchor="start", spacing=None, upper=False, italic=False):
         s = s.upper() if upper else s
         ls = f' letter-spacing="{spacing}"' if spacing else ""
+        it = ' font-style="italic"' if italic else ""
         s = (s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;"))
         self.raw(
             f'<text x="{x}" y="{y}" font-family="{family}" font-size="{size}" '
-            f'font-weight="{weight}" fill="{fill}" text-anchor="{anchor}"{ls}>{s}</text>'
+            f'font-weight="{weight}" fill="{fill}" text-anchor="{anchor}"{ls}{it}>{s}</text>'
         )
 
-    def wrapped_text(self, x, y, lines, size=14, family=F_SANS, weight=400,
+    def wrapped_text(self, x, y, lines, size=13, family=F_SANS, weight=400,
                        fill=INK3, anchor="start", lh=None):
-        lh = lh or size * 1.4
+        lh = lh or size * 1.35
         for i, ln in enumerate(lines):
             self.text(x, y + i * lh, ln, size=size, family=family, weight=weight,
                        fill=fill, anchor=anchor)
 
     def node(self, x, y, w, h, title, subtitle=None, mono=None, accent=BLUE,
               accent_tint=BLUE_50, icon=None):
-        """A titled card node: colored top rule, title, optional subtitle line(s), optional mono tag."""
-        self.rect(x, y, w, h, fill=SURFACE, stroke=LINE_STRONG, sw=1.5, rx=14)
-        self.raw(f'<rect x="{x}" y="{y}" width="{w}" height="6" rx="3" fill="{accent}"/>')
-        tx = x + 24
-        ty = y + 44
+        """A titled technical box: thin border, thin top rule, serif title,
+        optional subtitle lines, optional bracketed mono tag - no filled
+        color blocks, matching the academic figure convention."""
+        self.rect(x, y, w, h, fill=SURFACE, stroke=LINE_STRONG, sw=1, rx=2)
+        self.raw(f'<rect x="{x}" y="{y}" width="{w}" height="2.5" fill="{accent}"/>')
+        tx = x + 18
+        ty = y + 30
         if icon:
-            icon(self, x + 20, y + 24)
-            tx = x + 58
-        self.text(tx, ty, title, size=19, family=F_DISPLAY, weight=700, fill=INK)
-        cy = ty + 22
+            icon(self, x + 16, y + 16, s=20, color=accent)
+            tx = x + 44
+        self.text(tx, ty, title, size=15.5, family=F_DISPLAY, weight=700, fill=INK)
+        cy = ty + 18
         if subtitle:
             for ln in subtitle:
-                self.text(tx, cy, ln, size=13.5, family=F_SANS, weight=400, fill=INK3)
-                cy += 19
+                self.text(tx, cy, ln, size=11.5, family=F_SANS, weight=400, fill=INK3)
+                cy += 15
         if mono:
-            self.raw(
-                f'<rect x="{tx}" y="{cy-2}" width="{8*len(mono)+16}" height="21" rx="6" '
-                f'fill="{accent_tint}"/>'
-            )
-            self.text(tx + 8, cy + 13, mono, size=12, family=F_MONO, weight=500, fill=accent)
+            self.text(tx, cy + 3, f"[{mono}]", size=10.5, family=F_MONO, weight=400, fill=accent)
 
-    def arrow(self, x1, y1, x2, y2, color=INK3, sw=2, dashed=False, label=None,
-               label_size=12.5, curve=0, label_bg=True):
+    def arrow(self, x1, y1, x2, y2, color=INK3, sw=1.25, dashed=False, label=None,
+               label_size=11, curve=0, label_bg=True):
         marker = "url(#arrowhead)"
-        dash = ' stroke-dasharray="6,6"' if dashed else ""
+        dash = ' stroke-dasharray="4,4"' if dashed else ""
         if curve:
             mx, my = (x1 + x2) / 2 + curve, (y1 + y2) / 2
             path = f"M {x1} {y1} Q {mx} {my} {x2} {y2}"
@@ -99,19 +108,19 @@ class Canvas:
             )
             lx, ly = (x1 + x2) / 2, (y1 + y2) / 2
         if label:
-            w = 9 * len(label) + 14
+            w = 7.2 * len(label) + 10
             if label_bg:
                 self.raw(
-                    f'<rect x="{lx - w/2}" y="{ly - 12}" width="{w}" height="19" rx="5" '
-                    f'fill="{SURFACE}" stroke="{LINE}" stroke-width="1"/>'
+                    f'<rect x="{lx - w/2}" y="{ly - 10}" width="{w}" height="16" '
+                    f'fill="{SURFACE}"/>'
                 )
-            self.text(lx, ly + 2, label, size=label_size, family=F_MONO, weight=500,
+            self.text(lx, ly + 3, label, size=label_size, family=F_MONO, weight=400,
                         fill=INK2, anchor="middle")
 
     def defs_arrowhead(self, color=INK3):
         self.raw(
-            f'<defs><marker id="arrowhead" markerWidth="10" markerHeight="9" '
-            f'refX="9" refY="4.5" orient="auto"><path d="M0,0 L10,4.5 L0,9 z" '
+            f'<defs><marker id="arrowhead" markerWidth="9" markerHeight="8" '
+            f'refX="8" refY="4" orient="auto"><path d="M0,0 L9,4 L0,8 z" '
             f'fill="{color}"/></marker></defs>'
         )
 
@@ -119,8 +128,8 @@ class Canvas:
         self.raw(f'<g transform="translate({x} {y}) rotate({rotate})" opacity="0.85">{svg_snippet_shapes}</g>')
 
     def eyebrow(self, x, y, text_, color=INK3):
-        self.text(x, y, text_, size=12, family=F_SANS, weight=700, fill=color,
-                     spacing="0.12em", upper=True)
+        self.text(x, y, text_, size=10.5, family=F_SANS, weight=700, fill=color,
+                     spacing="0.1em", upper=True)
 
     def render(self):
         return (
@@ -135,27 +144,27 @@ class Canvas:
             f.write(self.render())
 
 
-# --- tiny hand-drawn stroke icons (Lucide-ish, 2.25px stroke, round caps) ---
+# --- tiny hand-drawn stroke icons (unchanged geometry, recolored by caller) ---
 
 def _icon_wrap(inner):
-    return f'<g stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" fill="none">{inner}</g>'
+    return f'<g stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none">{inner}</g>'
 
 def icon_browser(c, x, y, s=28, color=INK2):
     c.raw(f'<g transform="translate({x} {y})" stroke="{color}">' + _icon_wrap(
-        f'<rect x="0" y="0" width="{s}" height="{s*0.78}" rx="4"/>'
+        f'<rect x="0" y="0" width="{s}" height="{s*0.78}" rx="2"/>'
         f'<line x1="0" y1="{s*0.26}" x2="{s}" y2="{s*0.26}"/>'
-        f'<circle cx="{s*0.16}" cy="{s*0.13}" r="1.4" fill="{color}"/>'
+        f'<circle cx="{s*0.16}" cy="{s*0.13}" r="1" fill="{color}"/>'
     ) + '</g>')
 
 def icon_server(c, x, y, s=28, color=BLUE):
     c.raw(f'<g transform="translate({x} {y})" stroke="{color}">' + _icon_wrap(
-        f'<rect x="0" y="0" width="{s}" height="{s*0.42}" rx="4"/>'
-        f'<rect x="0" y="{s*0.5}" width="{s}" height="{s*0.42}" rx="4"/>'
-        f'<circle cx="{s*0.18}" cy="{s*0.21}" r="1.6" fill="{color}"/>'
-        f'<circle cx="{s*0.18}" cy="{s*0.71}" r="1.6" fill="{color}"/>'
+        f'<rect x="0" y="0" width="{s}" height="{s*0.42}" rx="2"/>'
+        f'<rect x="0" y="{s*0.5}" width="{s}" height="{s*0.42}" rx="2"/>'
+        f'<circle cx="{s*0.18}" cy="{s*0.21}" r="1.2" fill="{color}"/>'
+        f'<circle cx="{s*0.18}" cy="{s*0.71}" r="1.2" fill="{color}"/>'
     ) + '</g>')
 
-def icon_db(c, x, y, s=28, color=GREEN):
+def icon_db(c, x, y, s=28, color=BLUE):
     c.raw(f'<g transform="translate({x} {y})" stroke="{color}">' + _icon_wrap(
         f'<ellipse cx="{s/2}" cy="{s*0.18}" rx="{s/2}" ry="{s*0.16}"/>'
         f'<path d="M0 {s*0.18} L0 {s*0.82} A{s/2} {s*0.16} 0 0 0 {s} {s*0.82} L{s} {s*0.18}"/>'
@@ -163,12 +172,12 @@ def icon_db(c, x, y, s=28, color=GREEN):
 
 def icon_voice(c, x, y, s=28, color=RED):
     c.raw(f'<g transform="translate({x} {y})" stroke="{color}">' + _icon_wrap(
-        f'<rect x="{s*0.32}" y="0" width="{s*0.36}" height="{s*0.58}" rx="{s*0.18}"/>'
+        f'<rect x="{s*0.32}" y="0" width="{s*0.36}" height="{s*0.58}" rx="{s*0.15}"/>'
         f'<path d="M{s*0.14} {s*0.42} A{s*0.36} {s*0.36} 0 0 0 {s*0.86} {s*0.42}"/>'
         f'<line x1="{s/2}" y1="{s*0.78}" x2="{s/2}" y2="{s}"/>'
     ) + '</g>')
 
-def icon_chat(c, x, y, s=28, color=YELLOW):
+def icon_chat(c, x, y, s=28, color=BLUE):
     c.raw(f'<g transform="translate({x} {y})" stroke="{color}">' + _icon_wrap(
         f'<path d="M0 {s*0.1} h{s} v{s*0.6} h-{s*0.6} l-{s*0.22} {s*0.22} v-{s*0.22} h-{s*0.18} z"/>'
     ) + '</g>')
@@ -183,10 +192,10 @@ def icon_grid(c, x, y, s=28, color=INK2):
     half = s * 0.42
     gap = s * 0.16
     c.raw(f'<g transform="translate({x} {y})" stroke="{color}">' + _icon_wrap(
-        f'<rect x="0" y="0" width="{half}" height="{half}" rx="3"/>'
-        f'<rect x="{half+gap}" y="0" width="{half}" height="{half}" rx="3"/>'
-        f'<rect x="0" y="{half+gap}" width="{half}" height="{half}" rx="3"/>'
-        f'<rect x="{half+gap}" y="{half+gap}" width="{half}" height="{half}" rx="3"/>'
+        f'<rect x="0" y="0" width="{half}" height="{half}" rx="1.5"/>'
+        f'<rect x="{half+gap}" y="0" width="{half}" height="{half}" rx="1.5"/>'
+        f'<rect x="0" y="{half+gap}" width="{half}" height="{half}" rx="1.5"/>'
+        f'<rect x="{half+gap}" y="{half+gap}" width="{half}" height="{half}" rx="1.5"/>'
     ) + '</g>')
 
 def icon_cloud(c, x, y, s=28, color=INK2):
